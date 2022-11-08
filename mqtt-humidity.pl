@@ -38,7 +38,7 @@ if (defined $options{i} && defined $options{p}) {
        }
        if ($humidity < 60 && $dehumidifier eq "on") {
          $mqtt->publish('zigbee2mqtt/Smart Outlet/set' => '{ "state": "OFF" }');
-         $dehumidifier="on"
+         $dehumidifier="off"
        }
     },
   );
