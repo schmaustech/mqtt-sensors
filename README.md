@@ -8,7 +8,7 @@ First we continue to use the same lab environment I used in my previous blog.  T
 
 <img src="humidity-microshift.png" style="width: 1000px;" border=0/>
 
-With my lab in place I decided I wanted ot write something in Perl.  Some might think why use such an antiquated languange like Perl and part of that is because I am old school.  For my scenario I envisioned using the humidity sensor to detect when the humidity levels got to high and would then trigger an action on the event to turn on a dehumidifier in plugged into the smart outlet.  The basic process flow looks like the following diagram:
+With my lab in place I decided I wanted ot write something in Perl.  Some might think why use such an antiquated languange like Perl and part of that is because I am old school.  For my scenario I envisioned using the humidity sensor to detect when the humidity levels got too high.  The threshold would then trigger an action on the event to turn on/off a dehumidifier plugged into the smart outlet.  The basic process flow looks like the following diagram:
 
 <img src="perl-humidity.png" style="width: 700px;" border=0/>
 
