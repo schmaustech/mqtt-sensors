@@ -77,4 +77,5 @@ Temp C = 23.22 : Temp F = 73.796 : Humidity = 50.04
 ^C
 ~~~
 
+Now this was a very simple example but imagine the possibilities. For example what if this was a greenhouse that needed to keep the humidity and/or even the temperature at a certain range.  If the device that reduces the humidity/temperature (dehumidifier -or- exhaust fan) in the greenhouse could take Zigbee commands directly and control the speed of operation we might be able to not only turn it on/off but also increase/decrease speed of operation. All of this ensures that whatever was growing in the greenhouse is not damaged and also ensures we are powering devices only when we need to have them powered.  The bottom line is it saves businesses like the greenhouse operational costs when they are operating efficiently.
 
