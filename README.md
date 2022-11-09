@@ -8,10 +8,22 @@ First we continue to use the same lab environment I used in my previous blog.  T
 
 <img src="humidity-microshift.png" style="width: 1000px;" border=0/>
 
+## The Script
+
 With my lab in place I decided I wanted ot write something in Perl.  Some might think why use such an antiquated languange like Perl and part of that is because I am old school.  For my scenario I envisioned using the humidity sensor to detect when the humidity levels got too high.  The threshold would then trigger an action on the event to turn on/off a dehumidifier plugged into the smart outlet.  The basic process flow looks like the following diagram:
 
 <img src="perl-humidity.png" style="width: 700px;" border=0/>
 
+The script itself can take four different parameters:
+
+ * --hostname: hostname or IP address of MQTT host (required)
+ * --port: port for MQTT (optional but will default to 1883 if not provided)
+ * --threshold: humidity value that determines when action should be taken
+ * --help: prints the usage of script
+
+The script itself is located [here](https://github.com/schmaustech/mqtt-sensors/blob/main/mqtt-humidity.pl)
+
+When one runs the script without any flags the usage and an example will be displayed.
 
 ~~~bash
 ./mqtt-humidity2.pl 
@@ -26,6 +38,9 @@ Usage:
     mqtt-humidity.pl -ho 10.43.26.170 -p 1883 -t 65
 ~~~
 
+## The Demonstration of Script
+
+To demonstrate this script I went ahead and plugged in a light into my smart outlet which was in the off setting.   I launched the script in a terminal window.  Then I took the temperature/humidity sensor, cupped it in my hands and blew into my hands.   The moisture in my breath is enough to temporarily raise the value.  The script provides output so we can see the values changing and sure enough when I breathed into my hands with the sensor the value jumped to 81.37% which triggered the action event and turned on the light.  I then set the sensor back on my desk and over the course of 5 minutes the value slowly receded.  Once it dropped below the threshold value the light then turned back off.   The output of my script run is below:
 
 ~~~bash
 $ perl mqtt-temp.pl -ho 10.43.26.170 -p 1883 -t 60
@@ -61,3 +76,5 @@ Temp C = 23.22 : Temp F = 73.796 : Humidity = 50.04
 Temp C = 23.22 : Temp F = 73.796 : Humidity = 50.04
 ^C
 ~~~
+
+
