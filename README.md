@@ -2,7 +2,13 @@
 
 <img src="sensors.jpg" style="width: 800px;" border=0/>
 
+I recently wrote a [blog](https://schmaustech.blogspot.com/2022/10/deploy-microshift-on-rhel8-with.html) around using [Microshift](https://microshift.io/) to run my [Zigbee2MQTT](https://www.zigbee2mqtt.io/) workload.  This blog described all the details on how to deploy Microshift and then deploy the components inside of Microshift to enable some home automation.  Of course with Zigbee2MQTT there is a web interface that provides an intuitive web interface to interact with the smart devices.  However I wanted to take another approach that felt more real world when it comes to edge use cases.   I felt that in a real scenario there would be some code that would most likely subscribed and monitoring the MQTT queue.   An action would be performend when a certain event was observed and the action itself might publish something into the MQTT queue.   The rest of this blog will cover a simple scenario like I just described.
+
+First we continue to use the same lab environment I used in my previous blog.  The only difference here in the diagram below is we have now added a smart power outlet and a temperature/humidity sensor that can both be controlled remotely via the Zigbee protocol like all my other devices. 
+
 <img src="humidity-microshift.png" style="width: 1000px;" border=0/>
+
+
 
 <img src="perl-humidity.png" style="width: 700px;" border=0/>
 
