@@ -51,11 +51,16 @@ mqtt-humidity.pl - Monitor MQTT queue humidity and take action by turning on or 
 
   --hostname,-h   Hostname or IP address of MQTT host
   --port,-p       Port for MQTT (defaults to default 1883)
-  --threshold,-t  Threshold for humidity (defaults to 50%)
+  --threshold,-t  Threshold for humidity (defaults to 60)
   --help,-h       Print this help
+
+Example:
+
+mqtt-humidity.pl -ho 10.43.26.170 -p 1883 -t 65
 
 =head1 VERSION
 
 0.01
 
 =cut
+
