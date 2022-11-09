@@ -1,10 +1,10 @@
 # **Monitoring Sensors and Taking Action**
 
-<img src="sensors.jpg" style="width: 1000px;" border=0/>
+<img src="sensors.jpg" style="width: 800px;" border=0/>
 
 <img src="humidity-microshift.png" style="width: 1000px;" border=0/>
 
-<img src="perl-humidity.png" style="width: 1000px;" border=0/>
+<img src="perl-humidity.png" style="width: 700px;" border=0/>
 
 
 
