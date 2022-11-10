@@ -2,7 +2,7 @@
 
 <img src="sensors.jpg" style="width: 800px;" border=0/>
 
-I recently wrote a [blog](https://schmaustech.blogspot.com/2022/10/deploy-microshift-on-rhel8-with.html) around using [Microshift](https://microshift.io/) to run my [Zigbee2MQTT](https://www.zigbee2mqtt.io/) workload.  This blog described all the details on how to deploy Microshift and then deploy the components inside of Microshift to enable some home automation.  Of course with Zigbee2MQTT there is an intuitive web interface to interact with the smart devices.  However I wanted to take another approach that felt more ralistic when it comes to edge use cases.   I felt that in a industrial scenario there would be some code that would most likely subscribed and monitoring the MQTT queue.   An action would be performend when a certain event was observed and the action itself might publish something into the MQTT queue.   The rest of this blog will cover a simple scenario like I just described.
+I recently wrote a [blog](https://schmaustech.blogspot.com/2022/10/deploy-microshift-on-rhel8-with.html) around using [Microshift](https://microshift.io/) to run my [Zigbee2MQTT](https://www.zigbee2mqtt.io/) workload.  This blog described all the details on how to deploy Microshift and then deploy the components inside of Microshift to enable some home automation.  Of course with Zigbee2MQTT there is an intuitive web interface to interact with the smart devices.  However I wanted to take another approach that felt more realistic when it comes to edge use cases.   I felt that in a industrial scenario there would be some code that would most likely subscribed and monitoring the MQTT queue.   An action would be performnd when a certain event was observed and the action itself might publish something into the MQTT queue.   The rest of this blog will cover a simple scenario like I just described.
 
 First we continue to use the same lab environment I used in my previous blog.  The only difference here in the diagram below is we have now added a smart power outlet and a temperature/humidity sensor that can both be controlled remotely via the Zigbee protocol like all my other devices. 
 
@@ -26,7 +26,7 @@ The script itself is located [here](https://github.com/schmaustech/mqtt-sensors/
 When one runs the script without any flags the usage and an example will be displayed.
 
 ~~~bash
-./mqtt-humidity2.pl 
+./mqtt-humidity.pl 
 Usage:
       --hostname,-h   Hostname or IP address of MQTT host
       --port,-p       Port for MQTT (defaults to default 1883)
@@ -43,7 +43,7 @@ Usage:
 To demonstrate this script I went ahead and plugged in a light into my smart outlet which was in the off setting.   I launched the script in a terminal window.  Then I took the temperature/humidity sensor, cupped it in my hands and blew into my hands.   The moisture in my breath is enough to temporarily raise the value.  The script provides output so we can see the values changing and sure enough when I breathed into my hands with the sensor the value jumped to 81.37% which triggered the action event and turned on the light.  I then set the sensor back on my desk and over the course of 5 minutes the value slowly receded.  Once it dropped below the threshold value the light then turned back off.   The output of my script run is below:
 
 ~~~bash
-$ perl mqtt-temp.pl -ho 10.43.26.170 -p 1883 -t 60
+$ perl mqtt-humidity.pl -ho 10.43.26.170 -p 1883 -t 60
 Temp C = 23.43 : Temp F = 74.174 : Humidity = 51.22
 Temp C = 23.43 : Temp F = 74.174 : Humidity = 81.37 <-- Smart outlet turned on
 Temp C = 23.43 : Temp F = 74.174 : Humidity = 84.37
